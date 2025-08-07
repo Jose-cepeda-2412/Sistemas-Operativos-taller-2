@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-//declaración de funciones
+//declaracion de las funciones que se van a utilizar 
 
 void printFunction();
 float imcFuncion(float masa, float altura);

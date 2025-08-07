@@ -26,8 +26,9 @@ float imcFuncion(float masa, float altura){
         return IMC;
 }
 
-//imprime una matriz
+//imprime una matriz, la que se pase por parametro
 void impMatrix(float **mA, int N){
+    //se recorren filas y columnas para poder imprimir la matriz
         for(int i = 0; i < N; i++){
            for(int j = 0; j < N; j++){
                 printf (" %f ", mA[i][j]);
@@ -39,13 +40,13 @@ void impMatrix(float **mA, int N){
 
 //crea una matriz, reserva el espacio para que sea una matriz dinamica
 float **crearMatriz(int N) {
-
+    //se crea la matriz dinamica
     float **Matriz = malloc(N * sizeof(float *));
-
+    //se inicializa la matriz dinamica
     for (int i = 0; i < N; i++) {
         Matriz[i] = malloc(N * sizeof(float));   
     }
-
+    //se retorna la matriz
     return Matriz;
 }
 
@@ -60,6 +61,7 @@ void liberarMatriz(float **mat, int N){
 //llena la matriz a y b con numeros aleatorios
 void llenarMatriz(int N, float **mA, float **mB){
     srand(time (NULL));
+    //se recorren las filas y columnas para poderlas llenar de forma aleatoria
     for(int i = 0; i < N; i++){
         for(int j = 0; j < N; j++){
             mA [i][j] = (rand() % 100) * 0.121f; 
@@ -70,14 +72,14 @@ void llenarMatriz(int N, float **mA, float **mB){
 
 //multiplica la matriz a y b, guarda el resultado en la matriz c
 float **matrixMult(int N, float **mA, float **mB){
-    float **mC = crearMatriz(N);
+    float **mC = crearMatriz(N);//se crea la matriz c para guardar el resultado
     for(int i = 0; i < N; i++){
         for(int j = 0; j < N; j++){
-            mC[i][j] = 0.0f;
+            mC[i][j] = 0.0f; //se inicializa la matriz c en 0
             for(int k = 0; k < N; k++){
                 mC [i][j] += mA[i][k] * mB[k][j];
             }
         }
     }
-    return mC;
+    return mC;//se retorna la matriz c
 }
